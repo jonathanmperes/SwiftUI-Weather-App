@@ -31,6 +31,24 @@ struct ContentView: View {
                         .font(.system(size: 70, weight: .medium))
                         .foregroundColor(.white)
                 }
+                
+                HStack {
+                    VStack {
+                        Text("TUE")
+                            .font(.system(size: 16, weight: .medium, design: .default))
+                            .foregroundColor(.white)
+                        
+                        Image(systemName: "cloud.sun.fill")
+                            .renderingMode(.original)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                        
+                        Text("76º")
+                            .font(.system(size: 28, weight: .medium))
+                            .foregroundColor(.white)
+                    }
+                }
                 Spacer()
             }
         }
