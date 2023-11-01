@@ -32,6 +32,8 @@ struct ContentView: View {
                         .foregroundColor(.white)
                 }
                 
+                Spacer()
+                
                 HStack(spacing: 20) {
                     WeatherDayView(dayOfWeek: "TUE", imageName: "cloud.sun.fill", temperature: 76)
                     WeatherDayView(dayOfWeek: "WED", imageName: "sun.max.fill", temperature: 88)
