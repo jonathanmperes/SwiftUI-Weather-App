@@ -23,16 +23,13 @@ struct ContentView: View {
                     WeatherDayView(dayOfWeek: "FRI", imageName: "sunset.fill", temperature: 60)
                     WeatherDayView(dayOfWeek: "SAT", imageName: "snow", temperature: 25)
                 }
+                
                 Spacer()
                 
                 Button {
                     print("tapped")
                 } label: {
-                    Text("Change Day Time")
-                        .frame(width: 280, height: 50)
-                        .background(Color.white)
-                        .font(.system(size: 20, weight: .bold, design: .default))
-                        .cornerRadius(10)
+                    WeatherButton(title: "Change Day Time", textColor: .blue, backgroundColor: .white)
                 }
                 
                 Spacer()
@@ -115,5 +112,21 @@ struct MainWeatherStatusView: View {
                 .foregroundColor(.white)
         }
         .padding(.bottom, 40)
+    }
+}
+
+struct WeatherButton: View {
+    
+    var title: String
+    var textColor: Color
+    var backgroundColor: Color
+    
+    var body: some View {
+        Text(title)
+            .frame(width: 280, height: 50)
+            .background(backgroundColor)
+            .foregroundColor(textColor)
+            .font(.system(size: 20, weight: .bold, design: .default))
+            .cornerRadius(10)
     }
 }
