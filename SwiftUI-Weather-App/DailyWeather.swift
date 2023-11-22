@@ -9,7 +9,7 @@ import Foundation
 
 struct DailyWeather {
     
-    let datOfWeek: String
+    let dayOfWeek: String
     let imageName: String
     let temperature: Int
 }
