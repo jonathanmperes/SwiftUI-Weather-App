@@ -19,6 +19,8 @@ struct ContentView: View {
             VStack {
                 CityTextView(cityName: "Cupertino, CA")
                 
+                Spacer()
+                
                 MainWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
                 
                 ScrollView(.horizontal) {
@@ -28,6 +30,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .padding(45)
                 
                 Spacer()
                 
