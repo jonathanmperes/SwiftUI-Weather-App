@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @State var isNight = false
     
+    var weatherModel = WeatherModel()
+    
     var body: some View {
         ZStack {
             BackgroundView(isNight: isNight)
@@ -19,12 +21,12 @@ struct ContentView: View {
                 
                 MainWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
                 
-                HStack(spacing: 20) {
-                    WeatherDayView(dayOfWeek: "TUE", imageName: "cloud.sun.fill", temperature: 76)
-                    WeatherDayView(dayOfWeek: "WED", imageName: "sun.max.fill", temperature: 88)
-                    WeatherDayView(dayOfWeek: "THU", imageName: "wind.snow", temperature: 55)
-                    WeatherDayView(dayOfWeek: "FRI", imageName: "sunset.fill", temperature: 60)
-                    WeatherDayView(dayOfWeek: "SAT", imageName: "snow", temperature: 25)
+                ScrollView(.horizontal) {
+                    HStack(spacing: 20) {
+                        ForEach(weatherModel.weatherData, id: \.dayOfWeek) { dailyWeather in
+                            WeatherDayView(dailyWeather: dailyWeather)
+                        }
+                    }
                 }
                 
                 Spacer()
@@ -49,23 +51,21 @@ struct ContentView_Previews: PreviewProvider {
 
 struct WeatherDayView: View {
     
-    var dayOfWeek: String
-    var imageName: String
-    var temperature: Int
+    var dailyWeather : DailyWeather
     
     var body: some View {
         VStack {
-            Text(dayOfWeek)
+            Text(dailyWeather.dayOfWeek)
                 .font(.system(size: 26, weight: .medium, design: .default))
                 .foregroundColor(.white)
             
-            Image(systemName: imageName)
+            Image(systemName: dailyWeather.imageName)
                 .renderingMode(.original)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 40, height: 40)
             
-            Text("\(temperature)")
+            Text("\(dailyWeather.temperature)")
                 .font(.system(size: 28, weight: .medium))
                 .foregroundColor(.white)
         }
